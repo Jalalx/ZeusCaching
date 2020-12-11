@@ -7,7 +7,7 @@ namespace ZeusCaching.Services
 {
     public class ZeusCachingService : IZeusCachingService
     {
-        const string GlobalDisableVariableName = "Zeus_CACHING_DISABLED";
+        const string GlobalDisableVariableName = "ZEUS_CACHING_DISABLED";
         const string ZeusCachingHeaderName = "X-ZeusCaching";
         private static Lazy<bool> IsDisabledGlobally = new Lazy<bool>(InternalIsDisabledGlobally);
 

@@ -128,7 +128,7 @@ namespace WebApi1
 
 #### Disabling Cache Globally
 
-If you want to disable the ZeusCaching in application level call `builder.DisableGlobally()` in the `startup.cs` file or set environment variable `Zeus_CACHING_DISABLED` to `true` and restart the application.
+If you want to disable the ZeusCaching in application level call `builder.DisableGlobally()` in the `startup.cs` file or set environment variable `ZEUS_CACHING_DISABLED` to `true` and restart the application.
 
 
 #### Samples
