@@ -1,0 +1,65 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{17AFBD27-6982-41C6-80B8-EB7D1CF9C33C}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		CONTRIBUTING.md = CONTRIBUTING.md
+		Dockerfile = Dockerfile
+		.github\workflows\dotnetcore.yml = .github\workflows\dotnetcore.yml
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{91588750-C50B-42AC-BAA7-5C5E4A555B22}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{6BDC07AC-D48E-4974-A589-0D5AAEDC2B95}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{33119F3F-B45B-4F6D-9D67-D6E689C7F263}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZeusCachingSample", "samples\ZeusCachingSample\ZeusCachingSample.csproj", "{75B80AC7-672E-43D9-B984-C3071687FD17}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZeusCaching", "src\ZeusCaching\ZeusCaching.csproj", "{507C7D70-D7F4-458D-BBA2-CB0ED1FD6C93}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZeusCaching.Tests", "tests\ZeusCaching.Tests\ZeusCaching.Tests.csproj", "{303E9A53-A701-472B-94B3-E54E9DC0FC64}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZeusCaching.IntegrationTests", "tests\ZeusCaching.IntegrationTests\ZeusCaching.IntegrationTests.csproj", "{807DC77B-83B5-4A78-A062-F4CD1E2BDBDC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{75B80AC7-672E-43D9-B984-C3071687FD17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75B80AC7-672E-43D9-B984-C3071687FD17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75B80AC7-672E-43D9-B984-C3071687FD17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75B80AC7-672E-43D9-B984-C3071687FD17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{507C7D70-D7F4-458D-BBA2-CB0ED1FD6C93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{507C7D70-D7F4-458D-BBA2-CB0ED1FD6C93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{507C7D70-D7F4-458D-BBA2-CB0ED1FD6C93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{507C7D70-D7F4-458D-BBA2-CB0ED1FD6C93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{303E9A53-A701-472B-94B3-E54E9DC0FC64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{303E9A53-A701-472B-94B3-E54E9DC0FC64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{303E9A53-A701-472B-94B3-E54E9DC0FC64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{303E9A53-A701-472B-94B3-E54E9DC0FC64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{807DC77B-83B5-4A78-A062-F4CD1E2BDBDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{807DC77B-83B5-4A78-A062-F4CD1E2BDBDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{807DC77B-83B5-4A78-A062-F4CD1E2BDBDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{807DC77B-83B5-4A78-A062-F4CD1E2BDBDC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{75B80AC7-672E-43D9-B984-C3071687FD17} = {6BDC07AC-D48E-4974-A589-0D5AAEDC2B95}
+		{507C7D70-D7F4-458D-BBA2-CB0ED1FD6C93} = {91588750-C50B-42AC-BAA7-5C5E4A555B22}
+		{303E9A53-A701-472B-94B3-E54E9DC0FC64} = {33119F3F-B45B-4F6D-9D67-D6E689C7F263}
+		{807DC77B-83B5-4A78-A062-F4CD1E2BDBDC} = {33119F3F-B45B-4F6D-9D67-D6E689C7F263}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {591EFB0D-0F28-475F-9E78-297C71163CBF}
+	EndGlobalSection
+EndGlobal

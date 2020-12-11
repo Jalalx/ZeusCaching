@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Version>0.0.1</Version>
+  </PropertyGroup>
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+  <PropertyGroup>
+     <IsPackable>true</IsPackable>
+     <Authors>jalalx</Authors>
+     <Company />
+     <Description>An ASP.NET Core Action Filter that acts as an action level cache.</Description>
+     <PackageProjectUrl>https://github.com/Jalalx/ZeusCaching</PackageProjectUrl>
+     <RepositoryUrl>https://github.com/Jalalx/ZeusCaching</RepositoryUrl>
+     <RepositoryType>git</RepositoryType>
+     <PackageTags>cache, caching</PackageTags>
+     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+</Project>
