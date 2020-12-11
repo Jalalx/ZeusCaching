@@ -23,9 +23,9 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --configuration Release --no-restore --output ./bin
+      run: dotnet build --configuration Release --no-restore
     - name: Test
       run: dotnet test --verbosity normal
     - name: Deploy Package
-      run: dotnet nuget push bin/*.nupkg --api-key ${{ secrets.NugetKey }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+      run: dotnet nuget push src/ZeusCaching/bin/Release/netcoreapp3.1/*.nupkg --api-key ${{ secrets.NugetKey }} --source https://api.nuget.org/v3/index.json --skip-duplicate
    
