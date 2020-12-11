@@ -1,5 +1,5 @@
 ## Zeus Caching
-Zeus Caching helps using existing dotnet caching extensions easily in your ASP.NET Core applications by simply putting a `[ZeusCache(...)]` attribute.
+Zeus Caching helps using existing dotnet caching extensions easily in your ASP.NET Core Web API applications by simply putting a `[ZeusCache(...)]` attribute.
 
 ### CAUTION!
 **This library doesn't respect the HTTP `Cache-Control` header and is not an alternative to Microsoft [Response Caching](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCaching/). Also, this library does not check HTTP request for `Authorization` header and runs after Authentication/Authorization middleware so BE CAREFUL OF WHAT YOU ARE CACHING. If you want to cache authorized content please read [Tips For Caching Authorized Content](#authcaching) section.**
@@ -128,3 +128,6 @@ If you want to disable the ZeusCaching in application level call `builder.Disabl
 
 #### Samples
 Check out the [samples](/samples) folder for more information.
+
+#### More
+Feel free to open a new issue for any bug or a feature request.
