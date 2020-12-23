@@ -1,8 +1,6 @@
-name: .NET Core
+name: .NET Core Build Merge Request
 
 on:
-  push:
-    branches: [ master ]
   pull_request:
     branches: [ master ]
 
@@ -22,6 +20,4 @@ jobs:
       run: dotnet build --configuration Release --no-restore --output ./bin
     - name: Test
       run: dotnet test --verbosity normal
-    - name: Deploy Package
-      run: dotnet nuget push bin/*.nupkg --api-key ${{ secrets.NugetKey }} --source https://api.nuget.org/v3/index.json --skip-duplicate
    
