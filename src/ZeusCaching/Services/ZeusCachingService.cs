@@ -51,7 +51,7 @@ namespace ZeusCaching.Services
                 return;
             }
 
-            if (!profileOptions.CachingPredicate(_serviceProvider, context.ExecutionContext.HttpContext.Request))
+            if (!profileOptions.CachingPredicate(_serviceProvider, context.ExecutionContext.HttpContext))
             {
                 await next();
                 return;
@@ -110,7 +110,7 @@ namespace ZeusCaching.Services
             object wrappedContent;
             if (options.WrappingResultHandler != null)
             {
-                wrappedContent = options.WrappingResultHandler(_serviceProvider, content);
+                wrappedContent = options.WrappingResultHandler(_serviceProvider, context.ExecutionContext.HttpContext, content);
             }
             else
             {

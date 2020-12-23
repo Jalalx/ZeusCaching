@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ZeusCaching;
 using System;
+using Microsoft.AspNetCore.Http;
 
 namespace ZeusCachingSample
 {
@@ -30,7 +31,7 @@ namespace ZeusCachingSample
                 // builder.DisableGlobally(),
                 builder.AddDefaultProfile(options =>
                 {
-                    options.UseCachingPredicate((_, req) => !req.Path.StartsWithSegments("/private"));
+                    options.UseCachingPredicate((_, ctx) => !ctx.Request.Path.StartsWithSegments("/private"));
                     options.UseDistributedCachingAdapter();
                     options.UseCacheKeyHandler((sp, ctx) =>
                     {
@@ -63,7 +64,7 @@ namespace ZeusCachingSample
             services.AddControllers();
         }
 
-        private object WrapCacheResult(IServiceProvider serviceProvider, object content)
+        private object WrapCacheResult(IServiceProvider serviceProvider, HttpContext context, object content)
         {
             return new MyWrapper<object>
             {

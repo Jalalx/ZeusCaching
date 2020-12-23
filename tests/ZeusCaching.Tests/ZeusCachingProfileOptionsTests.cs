@@ -98,7 +98,7 @@ namespace ZeusCaching.Tests
         public void UseCachingPredicate_ForDefaultInstance_ActsAsExpected()
         {
             var options = new ZeusCachingProfileOptions();
-            Func<IServiceProvider, HttpRequest, bool> alwaysTrueHandler = (__, _) => true;
+            Func<IServiceProvider, HttpContext, bool> alwaysTrueHandler = (__, _) => true;
 
 
             options.UseCachingPredicate(alwaysTrueHandler);
@@ -114,7 +114,7 @@ namespace ZeusCaching.Tests
         public void UseWrappingHandler_ForDefaultInstance_ActsAsExpected()
         {
             var options = new ZeusCachingProfileOptions();
-            Func<IServiceProvider, object, object> wrapInResultHandler = (__, content) => new { Result = content };
+            Func<IServiceProvider, HttpContext, object, object> wrapInResultHandler = (__, _, content) => new { Result = content };
 
 
             options.UseWrappingHandler(wrapInResultHandler);

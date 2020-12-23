@@ -19,8 +19,8 @@ namespace ZeusCaching
         internal ZeusCachingProfileOptions(bool isEnabled,
             CachingAdapterMode cachingAdapterMode,
             Func<IServiceProvider, HttpContext, string> cacheKeyHandler,
-            Func<IServiceProvider, HttpRequest, bool> cachingPredicate,
-            Func<IServiceProvider, object, object> wrappingResultHandler)
+            Func<IServiceProvider, HttpContext, bool> cachingPredicate,
+            Func<IServiceProvider, HttpContext, object, object> wrappingResultHandler)
         {
             CachingAdapterMode = cachingAdapterMode;
             IsEnabled = isEnabled;
@@ -127,7 +127,7 @@ namespace ZeusCaching
         /// <summary>
         /// Gets or sets the caching profile predicate function.
         /// </summary>
-        internal Func<IServiceProvider, HttpRequest, bool> CachingPredicate { get; private set; }
+        internal Func<IServiceProvider, HttpContext, bool> CachingPredicate { get; private set; }
 
 
         /// <summary>
@@ -135,7 +135,7 @@ namespace ZeusCaching
         /// </summary>
         /// <param name="predicate">A predicate function that determines if the request should be cached.</param>
         /// <returns></returns>
-        public ZeusCachingProfileOptions UseCachingPredicate(Func<IServiceProvider, HttpRequest, bool> predicate)
+        public ZeusCachingProfileOptions UseCachingPredicate(Func<IServiceProvider, HttpContext, bool> predicate)
         {
             CachingPredicate = predicate ?? throw new ArgumentNullException(nameof(predicate));
             return this;
@@ -147,7 +147,7 @@ namespace ZeusCaching
         /// <summary>
         /// Gets or sets the caching profile wrapping handler.
         /// </summary>
-        internal Func<IServiceProvider, object, object> WrappingResultHandler { get; private set; }
+        internal Func<IServiceProvider, HttpContext, object, object> WrappingResultHandler { get; private set; }
 
 
         /// <summary>
@@ -155,7 +155,7 @@ namespace ZeusCaching
         /// </summary>
         /// <param name="handler">A handler function that wraps the response.</param>
         /// <returns></returns>
-        public ZeusCachingProfileOptions UseWrappingHandler(Func<IServiceProvider, object, object> handler)
+        public ZeusCachingProfileOptions UseWrappingHandler(Func<IServiceProvider, HttpContext, object, object> handler)
         {
             WrappingResultHandler = handler ?? throw new ArgumentNullException(nameof(handler));
             return this;
