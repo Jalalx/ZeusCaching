@@ -62,10 +62,10 @@ namespace ZeusCaching
 
 
 
-        internal static bool DefaultCachingPredicate(IServiceProvider _, HttpRequest __) => true;
+        internal static bool DefaultCachingPredicate(IServiceProvider _, HttpContext __) => true;
 
 
-
-        internal static object DefaultWrappingResultHandler(IServiceProvider _, object obj) => obj;
+        
+        internal static object DefaultWrappingResultHandler(IServiceProvider __, HttpContext _, object obj) => obj;
     }
 }
