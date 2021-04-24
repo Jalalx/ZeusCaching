@@ -100,5 +100,16 @@ namespace ZeusCachingSample.Controllers
             return DateTime.Now;
         }
 
+
+        [HttpGet("custom-adapter"), ZeusCache("CustomAdapterProfile", absoluteExpirationInSeconds: 30)]
+        public async Task<double> GetScalarFromCustomAdapterValueAsync()
+        {
+            _logger.LogInformation($"Cache missed when calling {Request.Path}");
+
+            await Task.Delay(1000);
+            var rng = new Random();
+            return rng.Next(100);
+        }
+
     }
 }

@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using ZeusCaching;
 using System;
 using Microsoft.AspNetCore.Http;
+using ZeusCaching.Services;
 
 namespace ZeusCachingSample
 {
@@ -24,6 +25,8 @@ namespace ZeusCachingSample
             services.AddMemoryCache();
             // Or...
             services.AddDistributedMemoryCache();
+            // Or for custom adapter:
+            services.AddSingleton<ICachingAdapter>(new NaiveCachingAdapter());
 
             //services.AddZeusCaching();
             services.AddZeusCaching((builder) =>
@@ -58,6 +61,12 @@ namespace ZeusCachingSample
                     options.UseWrappingHandler(WrapCacheResult);
                     options.UseInMemoryCachingAdapter();
                     options.Disable();
+                });
+
+                builder.AddNamedProfile("CustomAdapterProfile", options =>
+                {
+                    options.UseCustomCachingAdapter();
+                    options.Enable();
                 });
             });
 

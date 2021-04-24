@@ -29,6 +29,9 @@ namespace ZeusCaching.Services
                     var memoryCache = _serviceProvider.GetRequiredService<IMemoryCache>();
                     return new MemoryCachingAdapter(memoryCache);
 
+                case CachingAdapterMode.Custom:
+                    return _serviceProvider.GetRequiredService<ICachingAdapter>();
+
                 default:
                     throw new NotSupportedException($"Caching adapter mode {mode} is not supprted.");
             }
