@@ -68,5 +68,30 @@ namespace ZeusCaching.IntegrationTests
             Assert.False(secondResponse.Headers.Contains("X-ZeusCaching"));
         }
 
+        [Theory]
+        [InlineData("weatherforecast/custom-adapter")]
+        public async Task Get_WithCustomCachingAdapterProfile_EndpointsReturnSuccessAndNewResponse(string url)
+        {
+            // Arrange
+            var client = _factory.CreateClient();
+            var firstResponse = await client.GetAsync(url);
+
+            // Act
+            var secondResponse = await client.GetAsync(url);
+
+            // Assert
+            secondResponse.EnsureSuccessStatusCode();
+            Assert.Equal(firstResponse.StatusCode, secondResponse.StatusCode);
+            Assert.Equal(
+                firstResponse.Content.Headers.ContentType.ToString(),
+                secondResponse.Content.Headers.ContentType.ToString());
+            Assert.Equal(
+                await firstResponse.Content.ReadAsStringAsync(),
+                await secondResponse.Content.ReadAsStringAsync());
+
+            Assert.False(firstResponse.Headers.Contains("X-ZeusCaching"));
+            Assert.True(secondResponse.Headers.Contains("X-ZeusCaching"));
+        }
+
     }
 }

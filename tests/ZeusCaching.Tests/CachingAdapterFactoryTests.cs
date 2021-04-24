@@ -1,9 +1,11 @@
-﻿using ZeusCaching.Services;
-using Microsoft.Extensions.Caching.Distributed;
+﻿using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Caching.Memory;
 using Moq;
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 using Xunit;
+using ZeusCaching.Services;
 
 namespace ZeusCaching.Tests
 {
@@ -13,11 +15,13 @@ namespace ZeusCaching.Tests
         [InlineData(CachingAdapterMode.AutomaticDiscovery, typeof(AutoDiscoveryCachingAdapter))]
         [InlineData(CachingAdapterMode.DistributedCache, typeof(DistributedCachingAdapter))]
         [InlineData(CachingAdapterMode.MemoryCache, typeof(MemoryCachingAdapter))]
+        [InlineData(CachingAdapterMode.Custom, typeof(FakeCachingAdapter))]
         public void Create_ForGivenMode_ReturnsExpectedAdapter(CachingAdapterMode mode, Type expectedInstanceType)
         {
             var serviceProvider = new Mock<IServiceProvider>();
             serviceProvider.Setup(x => x.GetService(typeof(IDistributedCache))).Returns(Mock.Of<IDistributedCache>());
             serviceProvider.Setup(x => x.GetService(typeof(IMemoryCache))).Returns(Mock.Of<IMemoryCache>());
+            serviceProvider.Setup(x => x.GetService(typeof(ICachingAdapter))).Returns(new FakeCachingAdapter());
 
             CachingAdapterFactory factory = new CachingAdapterFactory(serviceProvider.Object);
 
@@ -29,6 +33,18 @@ namespace ZeusCaching.Tests
             Assert.IsType(expectedInstanceType, adapter);
         }
 
+        private class FakeCachingAdapter : ICachingAdapter
+        {
+            public Task<string> GetContentAsync(string key, CancellationToken cancellationToken = default)
+            {
+                return Task.FromResult(string.Empty);
+            }
+
+            public Task SetContentAsync(string key, string content, TimeSpan? slidingExpiration = null, DateTimeOffset? absoluteExpiration = null, TimeSpan? absoluteExpirationRelatedToNow = null, CancellationToken cancellationToken = default)
+            {
+                return Task.CompletedTask;
+            }
+        }
 
 
         [Fact]

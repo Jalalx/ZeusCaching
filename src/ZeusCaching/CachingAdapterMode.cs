@@ -21,5 +21,10 @@
         /// Use <see cref="Microsoft.Extensions.Caching.Memory.IMemoryCache"/> interface.
         /// </summary>
         MemoryCache = 2,
+
+        /// <summary>
+        /// Uses a custom implementation of the <see cref="ZeusCaching.Services.ICachingAdapter" />.
+        /// </summary>
+        Custom = 3
     }
 }

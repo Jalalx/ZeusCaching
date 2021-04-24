@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
+using ZeusCaching.Services;
 
 namespace ZeusCaching
 {
@@ -72,6 +73,15 @@ namespace ZeusCaching
         }
 
 
+        /// <summary>
+        /// Returns the user-registered caching adapter for caching.
+        /// </summary>
+        /// <returns></returns>
+        public ZeusCachingProfileOptions UseCustomCachingAdapter()
+        {
+            CachingAdapterMode = CachingAdapterMode.Custom;
+            return this;
+        }
 
 
         /// <summary>
